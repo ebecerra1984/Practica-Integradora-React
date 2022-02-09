@@ -3,7 +3,7 @@ import ContentRowMovies from "./ContentRowMovies";
 import GenresInDb from "./GenresInDb";
 import LastMovieInDb from "./LastMovieInDb";
 
-function ContentRowTop() {
+const ContentRowTop = () => {
   return (
     <React.Fragment>
       {/*<!-- Content Row Top -->*/}
@@ -26,5 +26,5 @@ function ContentRowTop() {
       {/*<!--End Content Row Top-->*/}
     </React.Fragment>
   );
-}
+};
 export default ContentRowTop;
