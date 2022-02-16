@@ -1,6 +1,6 @@
 import React from "react"
 
-function Card(props) {
+function SmallCard(props) {
 
 return(
 
@@ -26,4 +26,4 @@ return(
 )
 }
 
-export default Card
+export default SmallCard

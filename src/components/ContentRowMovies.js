@@ -1,5 +1,5 @@
 import React from "react"
-import Card from "./Card"
+import SmallCard from "./SmallCard"
     
 
 
@@ -42,7 +42,7 @@ function ContentRowMovies () {
 
         {cartProps.map( (movie, i) => {
 
-            return <Card {...movie} key={i}/>
+            return <SmallCard {...movie} key={i}/>
 
         })}
 
