@@ -19,7 +19,7 @@ const apiActorsRouter = require("./routes/api/actors");
 // view engine setup
 app.set("views", path.resolve(__dirname, "./views"));
 app.set("view engine", "ejs");
-app.set(cors());
+app.use(cors());
 
 app.use(express.static(path.resolve(__dirname, "../public")));
 
@@ -38,4 +38,4 @@ app.use("/api/actors", apiActorsRouter);
 app.use("/api/genres", apiGenresRouter);
 
 //Activando el servidor desde express
-app.listen("3000", () => console.log("Servidor corriendo en el puerto 3000"));
+app.listen("3001", () => console.log("Servidor corriendo en el puerto 3001"));
