@@ -1,13 +1,21 @@
-import React from "react";
-import SideBar from "./SideBar";
-import ContentWrapper from "./ContentWrapper";
+import React from 'react';
+
+
+
+
+import SideBar from './SideBar';
+import Footer from './Footer';
+import TopBar from './TopBar'
+
+
+
+
 function App() {
   return (
-    <React.Fragment>
-      <div id="wrapper">
-        <SideBar />
-        {/* <ContentWrapper /> */}
-      </div>
+    <React.Fragment>    
+        <div id="wrapper">
+          <SideBar />
+        </div> 
     </React.Fragment>
   );
 }

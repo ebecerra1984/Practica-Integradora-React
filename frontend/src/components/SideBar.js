@@ -1,86 +1,105 @@
-import React from "react";
-import image from "../assets/images/logo-DH.png";
-import { Route, Link, Routes } from "react-router-dom";
+import React from 'react';
+import image from '../assets/images/logo-DH.png';
+import {Route, Routes, Link} from 'react-router-dom'
 
-import ContentRowMovies from "./ContentRowMovies";
-import ContentRowTop from "./ContentRowTop";
-import ContentWrapper from "./ContentWrapper";
-import GenresInDb from "./GenresInDb";
-import LastMovieInDb from "./LastMovieInDb";
-import Error404 from "./404";
 
-function SideBar() {
-  return (
-    <React.Fragment>
-      {/*<!-- Sidebar -->*/}
-      <ul
-        className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion"
-        id="accordionSidebar"
-      >
-        {/*<!-- Sidebar - Brand -->*/}
-        <Link
-          className="sidebar-brand d-flex align-items-center justify-content-center"
-          to="/"
-        >
-          <div className="sidebar-brand-icon">
-            <img className="w-100" src={image} alt="Digital House" />
-          </div>
-        </Link>
 
-        {/*<!-- Divider -->*/}
-        <hr className="sidebar-divider my-0" />
 
-        {/*<!-- Nav Item - Dashboard -->*/}
-        <li className="nav-item active">
-          <Link className="nav-link" to="/">
-            <i className="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard - DH movies</span>
-          </Link>
-        </li>
+import Error404 from './Error404';
+import GenresInDb from './GenresInDb';
+import MoviesInDb from './MoviesInDb';
+import ContentRowMovies from './ContentRowMovies';
+import CategoriesDetail from './CategoriesDetail';
+import ContentWrapper from './ContentWrapper';
+import SearchMovies from './SearchMovies';
 
-        {/*<!-- Divider -->*/}
-        <hr className="sidebar-divider" />
 
-        {/*<!-- Heading -->*/}
-        <div className="sidebar-heading">Actions</div>
 
-        {/*<!-- Nav Item - Pages -->*/}
-        <li className="nav-item">
-          <Link className="nav-link collapsed" to="ContentRowMovies">
-            <i className="fas fa-fw fa-folder"></i>
-            <span>Resumen</span>
-          </Link>
-        </li>
 
-        {/*<!-- Nav Item - Charts -->*/}
-        <li className="nav-item">
-          <Link className="nav-link" to="LastMovieInDb">
-            <i className="fas fa-fw fa-chart-area"></i>
-            <span>Ultima peliucla en DB</span>
-          </Link>
-        </li>
+function SideBar(){
+    return(
+        <React.Fragment>
+            {/*<!-- Sidebar -->*/}
+            <ul className="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-        {/*<!-- Nav Item - Tables -->*/}
-        <li className="nav-item">
-          <Link className="nav-link" to="GenresInDb">
-            <i className="fas fa-fw fa-table"></i>
-            <span>Categorias</span>
-          </Link>
-        </li>
+                {/*<!-- Sidebar - Brand -->*/}
+                <Link className="sidebar-brand d-flex align-items-center justify-content-center" to="/">
+                    <div className="sidebar-brand-icon">
+                        <img className="w-100" src={image} alt="Digital House"/>
+                    </div>
+                </Link>
 
-        {/*<!-- Divider -->*/}
-        <hr className="sidebar-divider d-none d-md-block" />
-      </ul>
-      {/*<!-- End of Sidebar -->*/}
+                {/*<!-- Divider -->*/}
+                <hr className="sidebar-divider my-0"/>
 
-      <Routes>
-        <Route path="/" element={<ContentWrapper />} />
-        <Route path="ContentRowMovies" element={<ContentRowMovies />} />
-        <Route path="LastMovieInDb" element={<LastMovieInDb />} />
-        <Route path="GenresInDb" element={<GenresInDb />} />
-        <Route path="*" element={<Error404 />} />
-      </Routes>
-    </React.Fragment>
-  );
+                {/*<!-- Nav Item - Dashboard -->*/}
+                <li className="nav-item active">
+                    <Link className="nav-link" to="/">
+                        <i className="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard - DH movies</span>
+                    </Link>
+                </li>
+
+                {/*<!-- Divider -->*/}
+                <hr className="sidebar-divider"/>
+
+                {/*<!-- Nav Item - Pages -->*/}
+                <li className="nav-item">
+                     <Link className="nav-link collapsed" to="/stats">
+                        <i className="fas fa-fw fa-chart-area"></i>
+                        <span>Stats</span>
+                    </Link>
+                    
+                </li>
+
+                {/*<!-- Nav Item - Charts -->*/}
+                <li className="nav-item">
+                    <Link className="nav-link" to="/categories">
+                        <i className="fas fa-fw fa-folder"></i>
+                        <span>Categories</span>
+                    </Link>
+                </li>
+                
+
+                {/*<!-- Nav Item - Tables -->*/}
+                <li className="nav-item">
+                    <a className="nav-link" href="/table">
+                        <i className="fas fa-fw fa-table"></i>
+                        <span>Tables</span></a>
+                </li>
+
+                {/*<!-- Nav Item - Tables -->*/}
+                <li className="nav-item nav-link">
+                    <Link className="nav-link" to="/SearchMovies">
+                        <i className="fas fa-search"></i>
+                        <span>Search a movie</span>
+                    </Link>
+                </li>
+                {/*<!-- Divider -->*/}
+                <hr className="sidebar-divider d-none d-md-block"/>
+            </ul>
+            {/*<!-- End of Sidebar -->*/}
+            
+
+
+    <Routes>
+          
+        <Route path="/" element = {<ContentWrapper />} />
+        <Route path="/stats" element = {<div className='col-8'> <ContentRowMovies /></div>} />
+        <Route path="/categories" element =  {<GenresInDb />} />
+        <Route path="/table" element = {<MoviesInDb />} />
+        <Route path="/categories/:id" element = {<CategoriesDetail />} />
+        <Route path="/search" element = {<SearchMovies />} />
+
+
+          {/*<Route path='*' element= {<Error404 />} /> */}
+
+    </Routes>
+
+
+
+
+        </React.Fragment>
+    )
 }
 export default SideBar;

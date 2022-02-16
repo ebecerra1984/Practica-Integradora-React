@@ -1,8 +1,6 @@
 const path = require('path');
 const db = require('../../database/models');
-const sequelize = db.sequelize;
-const { Op } = require("sequelize");
-const moment = require('moment');
+
 
 
 //Aqui tienen otra forma de llamar a cada uno de los modelos
@@ -13,9 +11,8 @@ const Actors = db.Actor;
 
 const moviesAPIController = {
     'list': (req, res) => {
-        db.Movie.findAll({
-            include: ['genre']
-        })
+        db.Movie.findAll({include: ['genre']})
+        
         .then(movies => {
             let respuesta = {
                 meta: {
@@ -23,8 +20,19 @@ const moviesAPIController = {
                     total: movies.length,
                     url: 'api/movies'
                 },
-                data: movies
-            }
+
+                data: movies.map(movie => {
+                    return {
+                        title: movie.title,
+                        length: movie.length,
+                        rating: movie.rating,
+                        awards: movie.awards,
+                        genre: movie.genre.name,
+                    } 
+                    
+            })
+            
+        }
                 res.json(respuesta);
             })
     },

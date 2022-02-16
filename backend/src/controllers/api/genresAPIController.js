@@ -31,11 +31,12 @@ const genresAPIController = {
     'detail': (req, res) => {
         db.Genre.findByPk(req.params.id)
             .then(genre => {
+                console.log(genre)
                 let respuesta = {
                     meta: {
                         status: 200,
                         total: genre.length,
-                        url: '/api/genre/:id'
+                        url: '/api/genres/:id'
                     },
                     data: genre
                 }
@@ -51,9 +52,9 @@ const genresAPIController = {
                     meta: {
                         status: 200,
                         total: genre.length,
-                        url: '/api/genre/:id/movies'
+                        url: '/api/genres/:id/movies'
                     },
-                    data: genre
+                    data: genre.movies
                 }
                 res.json(respuesta);
             });
